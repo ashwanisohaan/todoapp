@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/screens/addtask_page.dart';
 
 class MyList extends StatefulWidget {
   const MyList({super.key});
@@ -13,7 +14,16 @@ class _MyListState extends State<MyList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('List Record'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => const Task()));
+            },
+            icon: Icon(Icons.add),
+          ),
+        ],
         leading: Icon(Icons.list),
         backgroundColor: Colors.yellow,
       ),

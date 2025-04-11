@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/screens/splash_page.dart';
 
 class Task extends StatefulWidget {
   const Task({super.key});
@@ -13,32 +14,57 @@ class _TaskState extends State<Task> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Task'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
+            },
+            icon: Icon(Icons.navigate_before),
+          ),
+        ],
         leading: Icon(Icons.list),
         backgroundColor: Colors.yellow,
       ),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: 'Add Task',
-                hintText: 'Attend meeting on 2pm',
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(12.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Add Task',
+                    hintText: 'Attend meeting on 2pm',
+                  ),
+                ),
               ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: 'Description',
-                hintText: 'Meet for new project ',
+              Container(
+                padding: EdgeInsets.all(12.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Description',
+                    hintText: 'Meet for new project ',
+                  ),
+                ),
               ),
-            ),
+
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Row(
+                  spacing: 18,
+                  children: [
+                    ElevatedButton(onPressed: () {}, child: Text('Cancel')),
+
+                    ElevatedButton(onPressed: () {}, child: Text('Save')),
+                  ],
+                ),
+              ),
+            ],
           ),
-          
-        ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/screens/splash_page.dart';
 import 'package:todoapp/screens/tasklist_page.dart';
 import 'package:todoapp/screens/addtask_page.dart';
 
@@ -9,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,20 +18,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Task(),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('ToDoApp'),
-        backgroundColor: Colors.amber,
-        leading: Icon(Icons.notes),
-      ),
-      body: Center(child: Text("wait a second")),
-    );
-  }
-}
+// class MyHomePage extends StatelessWidget {
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('ToDoApp'),
+//         backgroundColor: Colors.amber,
+//         leading: Icon(Icons.notes),
+//         actions: [
+//           IconButton(
+//             onPressed: () {},
+
+//             icon: Icon(Icons.refresh),
+//           ),
+//         ],
+//       ),
+//       body: Center(child: Text("wait a second")),
+//     );
+//   }
+// }

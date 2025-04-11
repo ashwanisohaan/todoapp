@@ -8,7 +8,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void initState() {}
+  //void initState() {}
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
