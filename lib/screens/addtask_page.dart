@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/screens/splash_page.dart';
+import 'package:todoapp/screens/tasklist_page.dart';
 
 class Task extends StatefulWidget {
   const Task({super.key});
@@ -19,7 +20,7 @@ class _TaskState extends State<Task> {
             onPressed: () {
               Navigator.of(
                 context,
-              ).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
+              ).push(MaterialPageRoute(builder: (context) => MyHomePage()));
             },
             icon: Icon(Icons.navigate_before),
           ),

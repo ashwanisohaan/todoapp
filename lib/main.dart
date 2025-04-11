@@ -22,23 +22,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MyHomePage extends StatelessWidget {
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('ToDoApp'),
-//         backgroundColor: Colors.amber,
-//         leading: Icon(Icons.notes),
-//         actions: [
-//           IconButton(
-//             onPressed: () {},
-
-//             icon: Icon(Icons.refresh),
-//           ),
-//         ],
-//       ),
-//       body: Center(child: Text("wait a second")),
-//     );
-//   }
-// }
