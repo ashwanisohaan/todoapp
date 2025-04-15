@@ -5,29 +5,32 @@ class MyList extends StatefulWidget {
   const MyList({super.key});
 
   @override
-  _MyListState createState() => _MyListState();
+  State<MyList> createState() => _MyListState();
 }
 
 class _MyListState extends State<MyList> {
+  void showSnackMsg(String msg) {
+    var snack = SnackBar(content: Text(msg));
+    ScaffoldMessenger.of(context).showSnackBar(snack);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Record'),
-        actions: [
+        title: Text('Task Record'),
+        actions: <Widget>[
           IconButton(
             onPressed: () {
               Navigator.of(
                 context,
-              ).push(MaterialPageRoute(builder: (context) => const Task()));
+              ).push(MaterialPageRoute(builder: (context) => AddTask()));
             },
             icon: Icon(Icons.add),
           ),
         ],
-        leading: Icon(Icons.list),
         backgroundColor: Colors.yellow,
       ),
-      body: Column(children: [ListView()]),
     );
   }
 }

@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/screens/splash_page.dart';
 import 'package:todoapp/screens/tasklist_page.dart';
 
-class Task extends StatefulWidget {
-  const Task({super.key});
+class AddTask extends StatefulWidget {
+  const AddTask({super.key});
 
   @override
-  _TaskState createState() => _TaskState();
+  State<AddTask> createState() => _AddTaskState();
 }
 
-class _TaskState extends State<Task> {
+class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Task'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (context) => MyHomePage()));
-            },
-            icon: Icon(Icons.navigate_before),
-          ),
-        ],
-        leading: Icon(Icons.list),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.navigate_before),
+        ),
         backgroundColor: Colors.yellow,
       ),
       body: Padding(
