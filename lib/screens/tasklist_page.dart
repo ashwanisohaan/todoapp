@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/models/model_task.dart';
 import 'package:todoapp/screens/addtask_page.dart';
+import 'package:todoapp/utility/utility.dart';
 
 class MyList extends StatefulWidget {
   const MyList({super.key});
@@ -9,9 +11,35 @@ class MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<MyList> {
-  void showSnackMsg(String msg) {
-    var snack = SnackBar(content: Text(msg));
-    ScaffoldMessenger.of(context).showSnackBar(snack);
+  final initialList = [
+    ModelTask(
+      title: "First Task",
+      task: "Please go and bring come vegetable from the market",
+    ),
+    // ModelTask(title: "Second Task", task: "Please get the bike repaired"),
+  ];
+
+  void _deleteItem(ModelTask task) {
+    setState(() {
+      int delIndex = initialList.indexOf(task);
+      initialList.removeAt(delIndex);
+    });
+    task.title.showSnack(context);
+  }
+
+  void addNewTask() {
+    setState(() {
+      initialList.add(
+        ModelTask(title: "New Task", task: "Added from the model sheet"),
+      );
+    });
+  }
+
+  void _showBottmSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => AddTask(addNewTask: addNewTask),
+    );
   }
 
   @override
@@ -20,16 +48,55 @@ class _MyListState extends State<MyList> {
       appBar: AppBar(
         title: Text('Task Record'),
         actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (context) => AddTask()));
-            },
-            icon: Icon(Icons.add),
-          ),
+          IconButton(onPressed: _showBottmSheet, icon: Icon(Icons.add)),
         ],
         backgroundColor: Colors.yellow,
+      ),
+      body:
+          initialList.isEmpty
+              ? _emptyWidget()
+              : ListView.builder(
+                itemCount: initialList.length,
+                itemBuilder: (ctx, index) {
+                  return _CardItem(initialList[index], context);
+                },
+              ),
+    );
+  }
+
+  Widget _CardItem(ModelTask mTask, BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text(mTask.title),
+            subtitle: Text(mTask.task),
+            trailing: IconButton(
+              onPressed: () {
+                _deleteItem(mTask);
+              },
+              icon: Icon(Icons.delete),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _emptyWidget() {
+    return SizedBox(
+      width: double.maxFinite,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("assets/images/logo_splash.jpg", height: 50, width: 50),
+          Text(
+            "No data found",
+            style: TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
+          ),
+        ],
       ),
     );
   }

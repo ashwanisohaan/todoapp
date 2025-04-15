@@ -1,9 +1,9 @@
 import 'package:uuid/uuid.dart';
 
-class Task {
+class ModelTask {
   String id;
   String title;
   String task;
 
-  Task({required this.title, required this.task}) : id = Uuid().v4.toString();
+  ModelTask({required this.title, required this.task}) : id = Uuid().v4.toString();
 }
