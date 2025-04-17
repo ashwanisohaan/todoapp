@@ -27,11 +27,9 @@ class _MyListState extends State<MyList> {
     task.title.showSnack(context);
   }
 
-  void addNewTask() {
+  void addNewTask(String title, String desc) {
     setState(() {
-      initialList.add(
-        ModelTask(title: "New Task", task: "Added from the model sheet"),
-      );
+      initialList.add(ModelTask(title: title, task: desc));
     });
   }
 
