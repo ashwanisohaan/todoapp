@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
+import 'package:todoapp/routing/app_routing.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   void goToNext(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/task_listing');
+      Navigator.pushNamed(context, AppRoutes.taskListing);
     });
   }
 

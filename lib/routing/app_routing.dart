@@ -2,8 +2,14 @@ import 'package:todoapp/screens/addtask_page.dart';
 import 'package:todoapp/screens/splash.dart';
 import 'package:todoapp/screens/tasklist_page.dart';
 
+class AppRoutes {
+  static const splashScreen = '/';
+  static const taskListing = '/taskListing';
+  static const addTask = '/addTask';
+}
+
 final appRoutes = {
-  '/': (context) => SplashScreen(),
-  '/task_listing': (context) => MyList(),
-  '/addtask': (context) => AddTask(addNewTask: () {}),
+  AppRoutes.splashScreen: (context) => SplashScreen(),
+  AppRoutes.taskListing: (context) => MyList(),
+  AppRoutes.addTask: (context) => AddTask(addNewTask: () {}),
 };
