@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AddTask extends StatefulWidget {
-  AddTask({super.key, required this.addNewTask});
+  const AddTask({super.key, required this.addNewTask});
 
-  VoidCallback addNewTask;
+  final Function(String, String) addNewTask;
 
   @override
   State<AddTask> createState() => _AddTaskState();
 }
 
 class _AddTaskState extends State<AddTask> {
+  final _textTitleControler = TextEditingController();
+  final _textDescControler = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +23,16 @@ class _AddTaskState extends State<AddTask> {
           child: Column(
             spacing: 12,
             children: [
-              TextField(decoration: InputDecoration(labelText: 'Add Task')),
+              TextField(
+                decoration: InputDecoration(labelText: 'Add Task'),
+                controller: _textTitleControler,
+              ),
 
-              TextField(decoration: InputDecoration(labelText: 'Description')),
+              TextField(
+                controller: _textDescControler,
+                decoration: InputDecoration(labelText: 'Description'),
+                
+              ),
               SizedBox(height: 20),
               Row(
                 spacing: 18,
@@ -35,7 +45,19 @@ class _AddTaskState extends State<AddTask> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      widget.addNewTask();
+                      var t = _textTitleControler.text;
+                      var desc = _textDescControler.text;
+                      if (t.isEmpty && desc.isEmpty) {
+                        "Title and Description can't be empty!".showSnack(
+                          context,
+                        );
+                        return;
+                      }
+
+                      widget.addNewTask(
+                        _textTitleControler.text,
+                        _textDescControler.text,
+                      );
                       Navigator.pop(context);
                     },
                     child: Text('Save'),
