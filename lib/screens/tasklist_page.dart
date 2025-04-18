@@ -4,7 +4,9 @@ import 'package:todoapp/screens/addtask_page.dart';
 import 'package:todoapp/utility/utility.dart';
 
 class MyList extends StatefulWidget {
-  const MyList({super.key});
+  const MyList({required this.uniqueId, super.key});
+
+  final String uniqueId;
 
   @override
   State<MyList> createState() => _MyListState();
@@ -46,7 +48,7 @@ class _MyListState extends State<MyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task Record'),
+        title: Text('Welcome ${widget.uniqueId}'),
         actions: <Widget>[
           IconButton(onPressed: _showBottmSheet, icon: Icon(Icons.add)),
         ],
