@@ -7,7 +7,7 @@ class SplashScreen extends StatelessWidget {
 
   void goToNext(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, AppRoutes.taskListing);
+      Navigator.pushNamed(context, AppRoutes.screenTaskListing);
     });
   }
 
