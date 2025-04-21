@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import 'package:todoapp/routing/app_routing.dart';
 
@@ -7,7 +8,8 @@ class SplashScreen extends StatelessWidget {
 
   void goToNext(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, AppRoutes.screenTaskListing);
+      //  Navigator.pushNamed(context, AppRoutes.screenTaskListing);
+      context.go('${AppRoutes.screenTaskListing}/sukhwant');
     });
   }
 

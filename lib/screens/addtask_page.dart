@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todoapp/utility/utility.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({super.key, required this.addNewTask});
@@ -31,7 +33,6 @@ class _AddTaskState extends State<AddTask> {
               TextField(
                 controller: _textDescControler,
                 decoration: InputDecoration(labelText: 'Description'),
-                
               ),
               SizedBox(height: 20),
               Row(
@@ -58,7 +59,7 @@ class _AddTaskState extends State<AddTask> {
                         _textTitleControler.text,
                         _textDescControler.text,
                       );
-                      Navigator.pop(context);
+                      context.pop();
                     },
                     child: Text('Save'),
                   ),
