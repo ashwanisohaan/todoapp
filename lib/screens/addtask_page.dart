@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/utility/utility.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({super.key, required this.addNewTask});

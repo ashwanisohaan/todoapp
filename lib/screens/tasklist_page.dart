@@ -35,6 +35,8 @@ class _MyListState extends State<MyList> {
 
   void _showBottmSheet() {
     showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true,
       context: context,
       builder: (context) => AddTask(addNewTask: addNewTask),
     );
