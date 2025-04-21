@@ -71,4 +71,11 @@ class _AddTaskState extends State<AddTask> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _textDescControler.dispose();
+    _textTitleControler.dispose();
+    super.dispose();
+  }
 }
