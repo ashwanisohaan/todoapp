@@ -58,7 +58,7 @@ class _MyListState extends State<MyList> {
           //  IconButton(onPressed: _showBottmSheet, icon: Icon(Icons.add)),
           IconButton(
             onPressed: () {
-              context.go(AppRoutes.screenSetting);
+              context.push(AppRoutes.screenSetting);
             },
             icon: Icon(Icons.add),
           ),

@@ -13,7 +13,7 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Provider Example"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.yellow,
       ),
       body: Column(
         children: [
@@ -23,16 +23,16 @@ class SettingScreen extends StatelessWidget {
           ),
           SizedBox(height: 30),
           ElevatedButton(
+            child: Text("Change"),
             onPressed: () {
               if (_edtControler.text.isNotEmpty) {
                 context.read<NameProvider>().changeName(
-                  name: _edtControler.text,
+                  name: _edtControler.text.trim(),
                 );
               }
-              // context.pop();
-              Navigator.pop(context);
+              context.pop();
+              // Navigator.pop(context);
             },
-            child: Text("Change"),
           ),
         ],
       ),
