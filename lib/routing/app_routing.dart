@@ -1,4 +1,5 @@
 import 'package:todoapp/screens/addtask_page.dart';
+import 'package:todoapp/screens/counter_page.dart';
 import 'package:todoapp/screens/setting.dart';
 import 'package:todoapp/screens/splash.dart';
 import 'package:todoapp/screens/tasklist_page.dart';
@@ -9,6 +10,7 @@ class AppRoutes {
   static const screenTaskListing = '/taskListing';
   static const screenAddTask = '/addTask';
   static const screenSetting = '/setting';
+  static const screenCounter = '/counter';
 
   // Without Go router use
   static var routes = {
@@ -16,6 +18,7 @@ class AppRoutes {
     screenTaskListing: (context) => MyList(uniqueId: ''),
     screenAddTask: (context) => AddTask(addNewTask: (a, b) {}),
     screenSetting: (context) => SettingScreen(),
+    screenCounter: (context) => CounterScreen(),
   };
 }
 
@@ -42,6 +45,10 @@ final goRouterConfig = GoRouter(
     GoRoute(
       path: AppRoutes.screenSetting,
       builder: (context, state) => SettingScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.screenCounter,
+      builder: (context, state) => CounterScreen(),
     ),
   ],
   debugLogDiagnostics: true,

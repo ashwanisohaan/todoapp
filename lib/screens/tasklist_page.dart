@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/models/model_task.dart';
-import 'package:todoapp/provider/name_provider.dart';
+import 'package:todoapp/statemanage/name_provider.dart';
 import 'package:todoapp/routing/app_routing.dart';
 import 'package:todoapp/screens/addtask_page.dart';
 import 'package:todoapp/utility/utility.dart';
@@ -71,13 +71,13 @@ class _MyListState extends State<MyList> {
               : ListView.builder(
                 itemCount: initialList.length,
                 itemBuilder: (ctx, index) {
-                  return _CardItem(initialList[index], context);
+                  return _cardItem(initialList[index], context);
                 },
               ),
     );
   }
 
-  Widget _CardItem(ModelTask mTask, BuildContext context) {
+  Widget _cardItem(ModelTask mTask, BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: Column(
