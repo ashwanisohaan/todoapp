@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 class StreamUtility {
-  final StreamController<int> _counterControler = StreamController<int>();
+  final StreamController<int> _counterControler =
+      StreamController<int>.broadcast();
   Stream<int> get counterStream => _counterControler.stream;
 
   int _count = 0;
@@ -16,6 +15,13 @@ class StreamUtility {
     if (_count != 0) {
       _count--;
       _counterControler.sink.add(_count);
+    }
+  }
+
+  Stream<int> getNumbers() async* {
+    for (int i = 1; i < 20; i++) {
+      await Future.delayed(Duration(seconds: 1));
+      yield i;
     }
   }
 }
