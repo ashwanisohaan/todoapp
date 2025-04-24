@@ -13,7 +13,7 @@ class CounterScreen extends StatelessWidget {
     // });
 
     var subscNumber = _streamObj.getNumbers().listen((data) {
-      print("Numbers- ${data}");
+      print("Numbers- $data");
     });
   }
 

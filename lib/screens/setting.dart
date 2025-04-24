@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/routing/app_routing.dart';
-import 'package:todoapp/statemanage/name_provider.dart';
+import 'package:todoapp/statemanage/app_provider.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({super.key});

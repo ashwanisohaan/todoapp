@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/statemanage/name_provider.dart';
+import 'package:todoapp/statemanage/app_provider.dart';
 import 'package:todoapp/routing/app_routing.dart';
 
 void main() => runApp(
-  ChangeNotifierProvider(
-    create: (context) => NameProvider(),
-    child: const MyApp(),
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => NameProvider()),
+      ChangeNotifierProvider(create: (context) => TodoProvider()),
+    ],
+    child: MyApp(),
   ),
 );
 

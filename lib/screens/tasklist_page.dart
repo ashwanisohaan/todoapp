@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/models/model_task.dart';
-import 'package:todoapp/statemanage/name_provider.dart';
+import 'package:todoapp/statemanage/app_provider.dart';
 import 'package:todoapp/routing/app_routing.dart';
 import 'package:todoapp/screens/addtask_page.dart';
 import 'package:todoapp/utility/utility.dart';
@@ -17,26 +17,30 @@ class MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<MyList> {
-  final initialList = [
-    ModelTask(
-      title: "First Task",
-      task: "Please go and bring come vegetable from the market",
-    ),
-    // ModelTask(title: "Second Task", task: "Please get the bike repaired"),
-  ];
+  // final initialList = [
+  //   ModelTask(
+  //     title: "First Task",
+  //     task: "Please go and bring come vegetable from the market",
+  //   ),
+  //   // ModelTask(title: "Second Task", task: "Please get the bike repaired"),
+  // ];
 
   void _deleteItem(ModelTask task) {
-    setState(() {
-      int delIndex = initialList.indexOf(task);
-      initialList.removeAt(delIndex);
-    });
+    // setState(() {
+    //   int delIndex = initialList.indexOf(task);
+    //   initialList.removeAt(delIndex);
+    // });
+
+    context.read<TodoProvider>().removeTask(modelTask: task);
+
     task.title.showSnack(context);
   }
 
   void addNewTask(String title, String desc) {
-    setState(() {
-      initialList.add(ModelTask(title: title, task: desc));
-    });
+    // setState(() {
+    //   initialList.add(ModelTask(title: title, task: desc));
+    // });
+    context.read<TodoProvider>().addTask(title: title, desc: desc);
   }
 
   void _showBottmSheet() {
@@ -50,28 +54,30 @@ class _MyListState extends State<MyList> {
 
   @override
   Widget build(BuildContext context) {
+    var pTotoList = context.watch<TodoProvider>().todoList;
+
     return Scaffold(
       appBar: AppBar(
         // title: Text('Welcome ${widget.uniqueId}'),
         title: Text('Welcome ${context.watch<NameProvider>().name}'),
         actions: <Widget>[
-          //  IconButton(onPressed: _showBottmSheet, icon: Icon(Icons.add)),
-          IconButton(
-            onPressed: () {
-              context.push(AppRoutes.screenSetting);
-            },
-            icon: Icon(Icons.add),
-          ),
+          IconButton(onPressed: _showBottmSheet, icon: Icon(Icons.add)),
+          // IconButton(
+          //   onPressed: () {
+          //     context.push(AppRoutes.screenSetting);
+          //   },
+          //   icon: Icon(Icons.add),
+          // ),
         ],
         backgroundColor: Colors.yellow,
       ),
       body:
-          initialList.isEmpty
+          pTotoList.isEmpty
               ? _emptyWidget()
               : ListView.builder(
-                itemCount: initialList.length,
+                itemCount: pTotoList.length,
                 itemBuilder: (ctx, index) {
-                  return _cardItem(initialList[index], context);
+                  return _cardItem(pTotoList[index], context);
                 },
               ),
     );
