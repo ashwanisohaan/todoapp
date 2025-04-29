@@ -1,4 +1,5 @@
 import 'package:todoapp/screens/addtask_page.dart';
+import 'package:todoapp/screens/bloc_example.dart';
 import 'package:todoapp/screens/counter_page.dart';
 import 'package:todoapp/screens/setting.dart';
 import 'package:todoapp/screens/splash.dart';
@@ -11,6 +12,7 @@ class AppRoutes {
   static const screenAddTask = '/addTask';
   static const screenSetting = '/setting';
   static const screenCounter = '/counter';
+  static const screenBlocExample = '/blocExample';
 
   // Without Go router use
   static var routes = {
@@ -19,12 +21,13 @@ class AppRoutes {
     screenAddTask: (context) => AddTask(addNewTask: (a, b) {}),
     screenSetting: (context) => SettingScreen(),
     screenCounter: (context) => CounterScreen(),
+    screenBlocExample: (context) => BlocExample(),
   };
 }
 
 // GoRouter configuration
 final goRouterConfig = GoRouter(
-  initialLocation: AppRoutes.screenSplash,
+  initialLocation: AppRoutes.screenBlocExample,
   routes: [
     GoRoute(
       path: AppRoutes.screenSplash,
@@ -49,6 +52,10 @@ final goRouterConfig = GoRouter(
     GoRoute(
       path: AppRoutes.screenCounter,
       builder: (context, state) => CounterScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.screenBlocExample,
+      builder: (context, state) => BlocExample(),
     ),
   ],
   debugLogDiagnostics: true,
