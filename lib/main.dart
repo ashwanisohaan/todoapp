@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todoapp/statemanage/app_provider.dart';
 import 'package:todoapp/routing/app_routing.dart';
 import 'package:todoapp/statemanage/bloc_pattern.dart';
+import 'package:todoapp/statemanage/cubit_bloc.dart';
 
 void main() => runApp(
   MultiProvider(
@@ -11,6 +12,10 @@ void main() => runApp(
       ChangeNotifierProvider(create: (context) => NameProvider()),
       ChangeNotifierProvider(create: (context) => TodoProvider()),
       BlocProvider<CounterBloc>(create: (context) => CounterBloc()),
+      BlocProvider<CounterBlocWithState>(
+        create: (context) => CounterBlocWithState(),
+      ),
+      BlocProvider<ResponseCubit>(create: (context) => ResponseCubit()),
     ],
     child: MyApp(),
   ),

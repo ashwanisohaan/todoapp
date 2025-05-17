@@ -1,6 +1,8 @@
 import 'package:todoapp/screens/addtask_page.dart';
 import 'package:todoapp/screens/bloc_example.dart';
+import 'package:todoapp/screens/bloc_with_state.dart';
 import 'package:todoapp/screens/counter_page.dart';
+import 'package:todoapp/screens/cubit_example.dart';
 import 'package:todoapp/screens/setting.dart';
 import 'package:todoapp/screens/splash.dart';
 import 'package:todoapp/screens/tasklist_page.dart';
@@ -13,6 +15,8 @@ class AppRoutes {
   static const screenSetting = '/setting';
   static const screenCounter = '/counter';
   static const screenBlocExample = '/blocExample';
+  static const screenBlocWithStateExample = '/blocWithStateExample';
+  static const screenCubitWithStateExample = '/cubitWithStateExample';
 
   // Without Go router use
   static var routes = {
@@ -22,12 +26,14 @@ class AppRoutes {
     screenSetting: (context) => SettingScreen(),
     screenCounter: (context) => CounterScreen(),
     screenBlocExample: (context) => BlocExample(),
+    screenBlocWithStateExample: (context) => BlocWithStateScreen(),
+    screenCubitWithStateExample: (context) => CubitWithStateScreen(),
   };
 }
 
 // GoRouter configuration
 final goRouterConfig = GoRouter(
-  initialLocation: AppRoutes.screenBlocExample,
+  initialLocation: AppRoutes.screenCubitWithStateExample,
   routes: [
     GoRoute(
       path: AppRoutes.screenSplash,
@@ -56,6 +62,14 @@ final goRouterConfig = GoRouter(
     GoRoute(
       path: AppRoutes.screenBlocExample,
       builder: (context, state) => BlocExample(),
+    ),
+    GoRoute(
+      path: AppRoutes.screenBlocWithStateExample,
+      builder: (context, state) => BlocWithStateScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.screenCubitWithStateExample,
+      builder: (context, state) => CubitWithStateScreen(),
     ),
   ],
   debugLogDiagnostics: true,

@@ -10,6 +10,8 @@ class IncrementEvent extends CounterEvent {}
 // states
 abstract class CounterState {}
 
+class InitialState extends CounterState {}
+
 class DecrementState extends CounterState {}
 
 class IncrementState extends CounterState {}
@@ -27,4 +29,16 @@ class CounterBloc extends Bloc<CounterEvent, int> {
   int counter = 0;
   int _increment() => counter++;
   int _decrement() => counter--;
+}
+
+class CounterBlocWithState extends Bloc<CounterEvent, CounterState> {
+  CounterBlocWithState() : super(InitialState()) {
+    on<CounterEvent>((event, emit) {
+      if (event is IncrementEvent) {
+        emit(IncrementState());
+      } else if (event is DecrementEvent) {
+        emit(DecrementState());
+      }
+    });
+  }
 }
